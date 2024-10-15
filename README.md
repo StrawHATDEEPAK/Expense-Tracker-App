@@ -38,6 +38,25 @@ A **Personal Expense Tracker** mobile application built using **Flutter**. The a
 - **Clean Architecture**: Ensures separation of concerns for scalable and maintainable code.
 - **Local Notifications**: Reminders for users to log expenses.
 
+### Screenshots
+
+#### Registration Screen and Login Screen
+<div>
+  <img src="./screenshots/Register Screen.jpg" alt="Registration Screen" height="500" style="display:inline-block; margin-right:20px;">
+  <img src="./screenshots/Login Screen.jpg" alt="Login Screen" height="500" style="display:inline-block;">
+</div>
+
+#### Expense Screen and Add Expense Screen
+<div>
+  <img src="./screenshots/Expense List Screen.jpg" alt="QR Code Screen" height="500" style="display:inline-block; margin-right:20px;">
+  <img src="./screenshots/Add Expense Screen.jpg" alt="Attendance Screen" height="500" style="display:inline-block;">
+</div>
+
+#### Statistics Screen
+<div>
+  <img src="./screenshots/Statistics Screen.jpg" alt="Student Profile" height="500" style="display:inline-block; margin-right:20px;">
+</div>
+
 
 ## Features
 
