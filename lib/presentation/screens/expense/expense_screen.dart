@@ -169,7 +169,6 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                 }
                 return Expanded(
                   child: ListView.builder(
-                      reverse: true,
                       itemCount: value.expenses.length,
                       itemBuilder: (context, index) {
                         return ExpenseCardWidget(
