@@ -23,28 +23,26 @@ class UserProvider extends ChangeNotifier {
   String get errorMessage => _errorMessage;
   bool get isLoggedIn => _isLoggedIn;
 
-  Future<void> login(String email, String password) async {
+  Future<bool> login(String email, String password) async {
     _isLoading = true;
     notifyListeners();
 
     try {
-      await loginUseCase.call(email, password);
-      _isLoggedIn = true;
-      await NotificationService().scheduleDailyNotification();
+      _isLoggedIn = await loginUseCase.call(email, password);
     } catch (e) {
       _errorMessage = e.toString();
     } finally {
-      _isLoading = false;
       notifyListeners();
     }
+    return _isLoggedIn;
   }
 
-  Future<void> signup(String name, String email, String password) async {
+  Future<bool> signup(String name, String email, String password) async {
     _isLoading = true;
     notifyListeners();
 
     try {
-      await signupUseCase.call(name, email, password);
+      _isLoggedIn = await signupUseCase.call(name, email, password);
       _isLoggedIn = true;
     } catch (e) {
       _errorMessage = e.toString();
@@ -52,6 +50,7 @@ class UserProvider extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     }
+    return _isLoggedIn;
   }
 
   Future<void> logout() async {

@@ -44,7 +44,7 @@ class ExpenseProvider extends ChangeNotifier {
   Future<void> sortByDate() async {
     _isLoading = true;
     notifyListeners();
-    _expenses.sort((a, b) => a.date.compareTo(b.date));
+    _expenses.sort((a, b) => b.date.compareTo(a.date));
     _isLoading = false;
     notifyListeners();
   }
@@ -52,7 +52,7 @@ class ExpenseProvider extends ChangeNotifier {
   Future<void> sortByAmount() async {
     _isLoading = true;
     notifyListeners();
-    _expenses.sort((a, b) => a.amount.compareTo(b.amount));
+    _expenses.sort((a, b) => b.amount.compareTo(a.amount));
     _isLoading = false;
     notifyListeners();
   }

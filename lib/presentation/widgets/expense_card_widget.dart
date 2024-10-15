@@ -59,8 +59,6 @@ class ExpenseCardWidget extends StatelessWidget {
                                 expense: expense,
                               ),
                             ));
-
-                        Navigator.pop(dialogContext);
                       },
                       child: const ListTile(
                         title: Text('Update Expense'),

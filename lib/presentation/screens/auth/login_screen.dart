@@ -62,19 +62,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 40,
               ),
               AuthButtonWidget(
-                isLoading:
-                    Provider.of<UserProvider>(context, listen: true).isLoading,
-                onTap: () {
+                onTap: () async {
                   if (_formKey.currentState!.validate()) {
-                    Provider.of<UserProvider>(context, listen: false)
+                    bool isLoggedIn = await Provider.of<UserProvider>(context,
+                            listen: false)
                         .login(emailController.text, passwordController.text);
 
-                    if (Provider.of<UserProvider>(context, listen: true)
-                        .isLoggedIn) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ExpenseScreen()));
+                    if (isLoggedIn) {
+                      if (context.mounted) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ExpenseScreen()));
+                      }
                     }
                   } else {}
                 },
