@@ -58,22 +58,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 40,
               ),
               AuthButtonWidget(
-                isLoading:
-                    Provider.of<UserProvider>(context, listen: true).isLoading,
-                onTap: () {
+                onTap: () async {
                   if (_formKey.currentState!.validate()) {
-                    Provider.of<UserProvider>(context, listen: false).signup(
-                        usernameController.text,
-                        emailController.text,
-                        passwordController.text);
-
-                    if (Provider.of<UserProvider>(context, listen: true)
-                        .isLoggedIn) {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ExpenseScreen(),
-                          ));
+                    bool isLoggedIn =
+                        await Provider.of<UserProvider>(context, listen: false)
+                            .signup(usernameController.text,
+                                emailController.text, passwordController.text);
+                    if (isLoggedIn) {
+                      if (context.mounted) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ExpenseScreen(),
+                            ));
+                      }
                     }
                   } else {}
                 },
